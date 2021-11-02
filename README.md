@@ -6,6 +6,7 @@ Hypixel stats website written with flask.
 
 - clone repo
 - install pip requirements
+- copy `.env.example` to `.env` and fill out with your own information
 - `flask run`
 
 ## License
