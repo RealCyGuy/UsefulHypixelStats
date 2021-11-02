@@ -53,6 +53,10 @@ a {
     padding: 5px;
 }
 
+.index input:-webkit-autofill {
+    -webkit-background-clip: text;
+}
+
 .index svg {
     height: 100%;
     width: auto;
