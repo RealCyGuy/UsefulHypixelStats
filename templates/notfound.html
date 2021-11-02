@@ -1,0 +1,5 @@
+{% extends "layout.html" %}
+{% block title %}{{ name }}'s UsefulHypixelStats{% endblock %}
+{% block body %}
+    <p class="message">Player <span class="specialname">{{ name }}</span> not found, <a href="{{ url_for("index") }}">go home</a>.</p>
+{% endblock %}

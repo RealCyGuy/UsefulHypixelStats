@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block title %}{{ name }}'s UsefulHypixelStats{% endblock %}
+{% block body %}
+    <p class="message">Wow, you've done it. You've found <span class="specialname">{{ name }}</span>'s account. A rare account that never logged onto
+        hypixel. Well played, <a href="{{ url_for("index") }}">go home</a>.</p>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block title %}{{ name }}'s UsefulHypixelStats{% endblock %}
+{% block body %}
+    <a class="title" href="{{ url_for("index") }}">UsefulHypixelStats</a>
+    <h1 class="name">
+        {{ name }}
+        <img src="{{ image }}">
+    </h1>
+    <div class="stats">
+        <p>
+            <b>Rank</b> {{ player.getRank()["rank"] }}
+        </p>
+        <p>
+            <b>Hypixel ID</b> {{ json["_id"] }}
+        </p>
+        <p>
+            <b>Completed Parkour</b> {{ json.get("parkourCompletions", [])|length }}/16
+        </p>
+        <p>
+            <b>Zombies Endermite
+                Kills</b> {{ json["stats"].get("Arcade", {}).get("endermite_zombie_kills_zombies", 0) }}
+        </p>
+        <p>
+            <b>SkyWars Quits</b> {{ json["stats"].get("SkyWars", {}).get("quits", 0) }}
+        </p>
+        <p>
+            <b>SkyWars Lucky Blocks Texture Pack Enabled</b> <span
+                class="capitalize">{{ json["stats"].get("SkyWars", {}).get("luckyBlockResourcePackEnabled", true) }}</span>
+        </p>
+        <p>
+            <b>Quakecraft Sound Enabled</b> <span
+                class="capitalize">{{ json["stats"].get("Quake", {}).get("enable_sound", true) }}</span>
+        </p>
+        <p>
+            <b>Bed Wars Void Deaths</b> {{ json["stats"].get("Bedwars", {}).get("void_deaths_bedwars", 0) }}
+        </p>
+        <p>
+            <b>Bed Wars Ultimate</b> <span
+                class="capitalize">{{ json["stats"].get("Bedwars", {}).get("selected_ultimate", "None").lower() }}</span>
+        </p>
+        <p>
+            <b>Speed UHC Blocks Broken</b> {{ json["stats"].get("SpeedUHC", {}).get("blocks_broken", 0) }}
+        </p>
+        <p>
+            <b>Correct Build Battle Guesses</b> {{ json["stats"].get("BuildBattle", {}).get("correct_guesses", 0) }}
+        </p>
+        <p>
+            <b>Bridge 3v3v3v3 Goals</b> {{ json["stats"].get("Duels", {}).get("bridge_3v3v3v3_goals", 0) }}
+        </p>
+        <p>
+            <b>Mega Walls Duels Class</b> {{ json["stats"].get("Duels", {}).get("mw_duels_class", "None") }}
+        </p>
+        <p>
+            <b>Murder Mystery Detective
+                Chance</b> {{ json["stats"].get("MurderMystery", {}).get("detective_chance", 0) }}
+        </p>
+        <p>
+            <b>Duels Stats Moved to Redis 2</b> <span
+                class="capitalize">{{ json["stats"].get("Duels", {}).get("moved_to_redis2", true) }}</span>
+        </p>
+        <p>
+            <b>Pit Last Played</b> <span
+                data-timestamp={{ json["stats"].get("Pit", {}).get("profile", {}).get("last_save") }}>
+                <noscript>enable javascript!!!</noscript>
+            </span>
+        </p>
+        <p>
+            <b>Blitz Survival Games Potions
+                Thrown</b> {{ json["stats"].get("HungerGames", {}).get("potions_thrown", 0) }}
+        </p>
+        <p>
+            <b>Housing Tutorial Step</b> {{ json.get("housingMeta", {}).get("tutorialStep", "WAITING_FOR_INTERACTION") }}
+        </p>
+        <p>
+            <b>Chat Channel</b> {{ json.get("channel", "ALL") }}
+        </p>
+        <p>
+            <b>Minecraft Version</b> {{ json.get("mcVersionRp", "No Info") }}
+        </p>
+        <p>
+            <b>Language</b> {{ json.get("language").upper() if json.get("language") else "No Info" }}
+        </p>
+    </div>
+    <script>
+        let timestamps = document.querySelectorAll("[data-timestamp]");
+        timestamps.forEach((timestamp) => {
+            let data_timestamp = parseInt(timestamp.getAttribute("data-timestamp"))
+            let text = "Never"
+            if (data_timestamp) {
+                let date = new Date(data_timestamp);
+                text = date.toLocaleString("en-US", {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit'
+                })
+            }
+            timestamp.textContent = text;
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,6 @@
+venv
+static/gen
+static/.webassets-cache
+.idea
+__pycache__
+.env

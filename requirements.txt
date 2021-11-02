@@ -1,0 +1,8 @@
+flask~=2.0.2
+hypixel~=0.8.0
+python-dotenv~=0.19.1
+gunicorn~=20.1.0
+requests~=2.26.0
+python-dotenv~=0.19.1
+flask-assets~=2.0
+cssmin~=0.2.0
