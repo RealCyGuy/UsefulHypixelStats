@@ -11,4 +11,4 @@ Hypixel stats website written with flask.
 
 ## License
 
-[MIT](https://github.com/RealCyGuy/UsefulHypixelStats/blob/main/LICENSE.md)
+[MIT!](https://github.com/RealCyGuy/UsefulHypixelStats/blob/main/LICENSE.md)
